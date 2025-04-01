@@ -148,3 +148,10 @@ Join active community to get help and contribute:
 
 ---
 
+## 📌 Connect with Me
+- **LinkedIn**: [Saad Salman Akram](https://www.linkedin.com/in/saadsalmanakram/)
+- **GitHub**: [SaadSalmanAkram](https://github.com/saadsalmanakram)
+- **Hugging Face**: [SaadSalman7](https://huggingface.co/SaadSalman7)
+- 📧 Email: [saadsalmanakram1@gmail.com](mailto:saadsalmanakram1@gmail.com)
+
+---
