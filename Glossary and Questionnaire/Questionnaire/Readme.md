@@ -1,4 +1,4 @@
-1. **Is Vanna open-source?**  
+1. **Is Vanna open-source?*
    Yes, Vanna OSS is open-source.  
 
 2. **What is Vanna Cloud?**  
