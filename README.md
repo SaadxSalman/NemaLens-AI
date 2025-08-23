@@ -1,157 +1,75 @@
-# Vanna.AI - Teach Your Database to Understand Natural Language
+# Para-Master: Multimodal Fine-Tuning for Parasite Identification 🦠🔍
 
-![Vanna.AI Logo](https://vanna.ai/docs/img/how-vanna-works.gif)
+Building on previous work with vision models and embeddings, **Para-Master** is a specialized, highly accurate model for identifying parasites from various sources. It is fine-tuned on a vast dataset of microscopic images of blood smears, tissue samples, and fecal samples to classify different parasite species and stages with unprecedented accuracy.
 
-## 🚀 Let Vanna.AI Write Your SQL for You
-The fastest way to get actionable insights from your database just by asking questions in plain English.
+-----
 
-## 📖 About This Repository
-This repository is dedicated to teaching developers, data analysts, and business users how to leverage Vanna.AI for text-to-SQL translation. Whether you're an experienced data engineer or a beginner looking to enhance your data querying capabilities, this repo covers everything you need to know.
+## ✨ Features
 
-## 🌟 Features of Vanna.AI
-- **Natural Language to SQL**: Generate SQL queries from simple English prompts.
-- **Enterprise-Grade AI**: Supports advanced security, governance, and compliance needs.
-- **Self-Learning AI**: Improves query accuracy as it learns from user interactions.
-- **Multi-Database Support**: Works with PostgreSQL, MySQL, Snowflake, BigQuery, and more.
-- **Customizable & Open Source**: Available for both cloud-based and self-hosted environments.
-- **Seamless Frontend Integrations**: Use with Slack, Streamlit, Jupyter Notebooks, and custom applications.
+  * **Highly Accurate Classification:** The fine-tuned **Vision Transformer** can recognize subtle morphological features of parasites that are often difficult for the human eye to detect.
+  * **Multimodal Data Analysis:** Analyzes both visual data (microscopic images) and genomic data (DNA/protein sequences) for a comprehensive identification.
+  * **Genomic Identification:** The custom **vector embeddings model** for parasite genomics enables rapid comparison and identification of novel or mutated parasite strains.
+  * **High-Quality Data Curation:** Leverages **Argilla** to ensure the massive dataset of microscopic images is accurately curated and labeled, leading to a robust and reliable model.
+  * **Fast Genomic Search:** Uses **Milvus**, a high-performance vector database, to enable ultra-fast searching of genomic embeddings.
 
----
+-----
 
-## 🛠️ Getting Started
+## ⚙️ Tech Stack
+
+  * **Frontend:** [SvelteKit](https://kit.svelte.dev/)
+  * **Backend:** Python (for model serving)
+  * **Vision Model:** Fine-tuned Swin Transformer (or specialized variant)
+  * **Vector Database:** [Milvus](https://milvus.io/)
+  * **Data Curation:** [Argilla](https://www.argilla.io/)
+
+-----
+
+## 🚀 Getting Started
+
 ### Prerequisites
-To start using Vanna.AI, ensure you have:
-- Python 3.7+
-- `pip` package manager
-- A supported SQL database (PostgreSQL, MySQL, Snowflake, etc.)
+
+  * Python 3.10+
+  * Node.js (for SvelteKit)
+  * Docker (for Milvus)
 
 ### Installation
-```sh
-pip install vanna
-```
 
-### Basic Usage
-#### 1️⃣ Initialize Vanna.AI
-```python
-import vanna
-vn = vanna.Vanna()
-vn.connect(database_url="your_database_connection_url")
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/saadsalmanakram/Para-Master.git
+    cd Para-Master
+    ```
+2.  **Start Docker containers:**
+    ```bash
+    docker-compose up -d
+    ```
+3.  **Set up the Python backend:**
+    ```bash
+    cd backend
+    pip install -r requirements.txt
+    ```
+4.  **Set up the frontend:**
+    ```bash
+    cd frontend
+    npm install
+    ```
 
-#### 2️⃣ Generate SQL from a Natural Language Query
-```python
-query = vn.ask("Show me the total sales for the last quarter.")
-print(query)
-```
-Output:
-```sql
-SELECT SUM(sales) FROM orders WHERE order_date >= DATE_SUB(NOW(), INTERVAL 3 MONTH);
-```
+### Configuration
 
-#### 3️⃣ Execute the Query
-```python
-results = vn.run(query)
-print(results)
-```
+Follow the instructions in the `config/` directory to connect to your Milvus instance and set up the model paths.
 
----
+### Usage
 
-## 🔥 Vanna Products
-### 1️⃣ **Vanna Cloud**
-- Zero setup required.
-- Train AI on your unique business data.
-- Enterprise-grade governance and permissions.
+Run the Python backend and the SvelteKit frontend to begin the parasite identification process.
 
-[Get Started for Free](https://vanna.ai/cloud)
+-----
 
-### 2️⃣ **Vanna Self-Hosted Enterprise**
-- Deploy within your infrastructure for full data sovereignty.
-- Works with any LLM provider.
+## 🤝 Contributing
 
-[Contact Us](mailto:support@vanna.ai)
+We welcome contributions from microbiologists, data scientists, and developers. Please read our [CONTRIBUTING.md](https://www.google.com/search?q=https://github.com/saadsalmanakram/Para-Master/blob/main/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-### 3️⃣ **Vanna Embedded**
-- API integration for existing applications.
-- Supports AI-driven SQL interactions for users.
+-----
 
-[Get Started for Free](https://vanna.ai/embedded)
+## 📄 License
 
-### 4️⃣ **Vanna OSS (Open Source Software)**
-- Full customization control.
-- Free and flexible for developers.
-
-[Read the Docs](https://vanna.ai/docs)
-
----
-
-## 📖 Learning Resources
-- **Whitepaper**: [How to achieve high SQL accuracy using AI](https://vanna.ai/whitepaper)
-- **Blog**: [Why use AI for SQL generation?](https://vanna.ai/blog)
-- **Documentation**: [Comprehensive Vanna Docs](https://vanna.ai/docs)
-
----
-
-## 🔍 Why Use Vanna.AI?
-✅ **Open-Source & Secure** - No database content is sent to an LLM unless explicitly enabled.
-✅ **Self-Learning AI** - Continuous model improvement with user interactions.
-✅ **Customizable** - Works with various databases, LLMs, and frontends.
-✅ **Enterprise-Ready** - Compliance with strict security and data governance policies.
-
----
-
-## 🏗️ How It Works
-| Component | Function |
-|-----------|----------|
-| **Database** | Stores structured data for querying |
-| **Metadata Storage** | Uses ChromaDB to find relevant tables, documentation, and queries |
-| **AI Model** | Generates SQL based on metadata |
-| **Execution Engine** | Runs the SQL queries and returns results |
-| **User Interface** | Displays results via web apps, Slack, or custom UIs |
-
----
-
-## ⚙️ Supported Databases
-Vanna.AI works with:
-- ✅ PostgreSQL
-- ✅ Microsoft SQL Server
-- ✅ MySQL
-- ✅ DuckDB
-- ✅ Snowflake
-- ✅ BigQuery
-- ✅ SQLite
-- ✅ Oracle
-- ✅ Custom Databases (via connector API)
-
----
-
-## 💡 Use Cases
-- **Data Analysts** - Quickly generate SQL queries without manual coding.
-- **Business Intelligence Teams** - Provide non-technical users with easy data access.
-- **Software Engineers** - Embed AI-powered SQL generation in applications.
-- **Enterprise IT Teams** - Ensure security and compliance while enhancing productivity.
-
----
-
-## 🌍 Community & Support
-Join active community to get help and contribute:
-- 💬 [Discord](https://discord.gg/vanna)
-- ⭐ [GitHub](https://github.com/vanna-ai)
-- 📝 [Blog](https://vanna.ai/blog)
-- 📧 Email: [support@vanna.ai](mailto:support@vanna.ai)
-
----
-
-## 📜 Legal & Security
-- 🔐 [Data Security FAQ](https://vanna.ai/security)
-- 📝 [Privacy Policy](https://vanna.ai/privacy)
-- 📜 [Terms & Conditions](https://vanna.ai/terms)
-
----
-
-## 📌 Connect with Me
-- **LinkedIn**: [Saad Salman Akram](https://www.linkedin.com/in/saadsalmanakram/)
-- **GitHub**: [SaadSalmanAkram](https://github.com/saadsalmanakram)
-- **Hugging Face**: [SaadSalman7](https://huggingface.co/SaadSalman7)
-- 📧 Email: [saadsalmanakram1@gmail.com](mailto:saadsalmanakram1@gmail.com)
-
----
+This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=https://github.com/saadsalmanakram/Para-Master/blob/main/LICENSE) file for details.
