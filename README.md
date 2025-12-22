@@ -140,3 +140,51 @@ Run the Python backend and the SvelteKit frontend to begin the parasite identifi
 
 -----
 
+To bring everything together, here is the complete, final directory structure for **Para-Master**. This includes the SvelteKit frontend, Next.js admin dashboard, FastAPI ML service, Docker infrastructure, and the GitHub Actions automation.
+
+### 📁 Project Structure
+
+```text
+Para-Master/
+├── .github/
+│   └── workflows/
+│       └── main.yml             # GitHub Actions CI/CD pipeline
+├── apps/
+│   ├── web-svelte/              # Core Identification Interface
+│   │   ├── src/
+│   │   │   ├── lib/
+│   │   │   │   └── components/
+│   │   │   │       └── ImageUploader.svelte  # Vision ID Component
+│   │   │   └── routes/
+│   │   │       └── genomics/
+│   │   │           └── +page.svelte          # Genomic Search Page
+│   │   ├── tailwind.config.js
+│   │   └── package.json
+│   └── admin-next/              # Management Dashboard (MERN)
+│       ├── src/
+│       │   ├── app/
+│       │   │   ├── api/parasites/route.ts    # MongoDB API Routes
+│       │   │   └── parasites/page.tsx        # CRUD UI
+│       │   ├── components/
+│       │   │   └── StatsGrid.tsx             # Dashboard Analytics
+│       │   └── lib/
+│       │       ├── mongodb.ts                # DB Connection
+│       │       └── models/
+│       │           └── Parasite.ts           # Mongoose Schema
+│       └── package.json
+├── services/
+│   └── ml-api/                  # Python Backend (FastAPI)
+│       ├── main.py              # Main API & Milvus Search Logic
+│       ├── scripts/
+│       │   └── initialize_db.py # Milvus Schema Setup Script
+│       ├── models/
+│       │   ├── swin_transformer.py
+│       │   └── genomic_encoder.py
+│       └── requirements.txt
+├── docker-compose.yml           # Milvus, MongoDB, Argilla, MinIO
+├── .gitignore                   # Ignores .env, node_modules, venv, etc.
+└── README.md
+
+```
+
+---
