@@ -64,12 +64,3 @@ Run the Python backend and the SvelteKit frontend to begin the parasite identifi
 
 -----
 
-## 🤝 Contributing
-
-We welcome contributions from microbiologists, data scientists, and developers. Please read our [CONTRIBUTING.md](https://www.google.com/search?q=https://github.com/saadsalmanakram/Para-Master/blob/main/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
------
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=https://github.com/saadsalmanakram/Para-Master/blob/main/LICENSE) file for details.
