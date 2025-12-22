@@ -2,6 +2,7 @@
 from fastapi import FastAPI, UploadFile, File
 from pymilvus import connections, Collection
 import torch
+from pydantic import BaseModel
 # from transformers import AutoModelForImageClassification 
 
 app = FastAPI(title="Para-Master ML API")
@@ -25,3 +26,38 @@ async def search_genomic(sequence: str):
     # 2. Query Milvus collection
     # 3. Return top matches
     return {"matches": ["Strain_A", "Strain_B"]}
+
+
+class GenomicQuery(BaseModel):
+    sequence: str
+
+@app.post("/identify/genomic")
+async def search_genomic(query: GenomicQuery):
+    # 1. Mock embedding (Replace with your DNABERT/ESM-2 model)
+    # query_vector = model.encode(query.sequence)
+    query_vector = [0.1] * 768  # Placeholder
+    
+    # 2. Search Milvus
+    collection = Collection("parasite_genomics")
+    collection.load()
+    
+    search_params = {"metric_type": "L2", "params": {"nprobe": 10}}
+    results = collection.search(
+        data=[query_vector], 
+        anns_field="genomic_embedding", 
+        param=search_params, 
+        limit=5,
+        output_fields=["species_name", "strain_id"]
+    )
+
+    # 3. Format Response
+    matches = []
+    for hits in results:
+        for hit in hits:
+            matches.append({
+                "species_name": hit.entity.get("species_name"),
+                "strain_id": hit.entity.get("strain_id"),
+                "score": hit.distance
+            })
+            
+    return {"matches": matches}
