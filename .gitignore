@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+.ruff_cache/
+.DS_Store
+uploads/
+
+# local data services
+qdrant_storage/
+postgres_data/
+redis_data/
